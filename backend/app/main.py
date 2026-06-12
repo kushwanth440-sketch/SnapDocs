@@ -9,12 +9,12 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# CORS
-origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000").split(",")
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=[
+        "https://snap-docs-orrvv59zy-kushwanth-juturu-s-projects.vercel.app/",
+        "http://localhost:3000",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
