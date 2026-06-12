@@ -4,12 +4,12 @@ from PIL import Image
 import io
 import base64
 import numpy as np
-import easyocr
+# import easyocr
 import io
-import numpy as np
+# import numpy as np
 from PIL import Image
 router = APIRouter()
-reader = easyocr.Reader(['en'], gpu=False)  # loads once on startup
+# reader = easyocr.Reader(['en'], gpu=False)  # loads once on startup
 
 
 @router.get("/")
