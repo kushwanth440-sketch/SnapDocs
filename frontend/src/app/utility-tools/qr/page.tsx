@@ -6,7 +6,7 @@ import { useDropzone } from "react-dropzone";
 import Navbar from "@/components/ui/layout/Navbar";
 import Link from "next/link";
 import { ArrowLeft, QrCode, Download, Upload, RefreshCw } from "lucide-react";
-
+import { API_URL } from "@/lib/api";
 export default function QRGeneratorPage() {
   const [text, setText] = useState("");
   const [fgColor, setFgColor] = useState("#000000");
@@ -44,7 +44,7 @@ export default function QRGeneratorPage() {
     setResult(null);
 
     try {
-      const response = await fetch("http://localhost:8000/api/qr/generate", {
+      const response = await fetch(`${API_URL}/api/qr/generate`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

@@ -9,6 +9,8 @@ import {
   ImageUp, Upload, Loader2, CheckCircle, Download, ArrowLeft, X, ArrowUp, ArrowDown,
 } from "lucide-react";
 import { main } from "framer-motion/client";
+import { API_URL } from "@/lib/api";
+// const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 function formatSize(bytes: number): string {
   if (bytes < 1024) return bytes + " B";
@@ -77,7 +79,7 @@ export default function ImageToPDFPage() {
       const formData = new FormData();
       images.forEach((img) => formData.append("files", img.file));
 
-      const response = await fetch("http://localhost:8000/api/pdf/image-to-pdf", {
+      const response = await fetch(`${API_URL}/api/pdf/image-to-pdf`, {
         method: "POST",
         body: formData,
       });

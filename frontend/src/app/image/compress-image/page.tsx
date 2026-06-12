@@ -9,6 +9,7 @@ import {
   ImageDown, Upload, Loader2, CheckCircle, Download, ArrowLeft,
 } from "lucide-react";
 import { main } from "framer-motion/client";
+import { API_URL } from "@/lib/api";
 
 function formatSize(bytes: number): string {
   if (bytes < 1024) return bytes + " B";
@@ -54,7 +55,7 @@ export default function CompressImagePage() {
       formData.append("file", file);
       formData.append("quality", String(quality));
 
-      const response = await fetch("http://localhost:8000/api/image/compress", {
+      const response = await fetch(`${API_URL}/api/image/compress`, {
         method: "POST",
         body: formData,
       });

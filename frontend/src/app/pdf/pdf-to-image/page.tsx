@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useDropzone } from "react-dropzone";
 import Navbar from "@/components/ui/layout/Navbar";
 import Link from "next/link";
+import { API_URL } from "@/lib/api";
 import {
   Image, Upload, Loader2, CheckCircle, Download, ArrowLeft, FileText,
 } from "lucide-react";
@@ -56,7 +57,7 @@ export default function PDFToImagePage() {
       formData.append("file", file);
       formData.append("format", format);
 
-      const response = await fetch("http://localhost:8000/api/pdf/pdf-to-image", {
+      const response = await fetch(`${API_URL}/api/pdf/pdf-to-image`, {
         method: "POST",
         body: formData,
       });

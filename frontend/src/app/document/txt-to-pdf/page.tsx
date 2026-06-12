@@ -7,7 +7,7 @@ import Navbar from "@/components/ui/layout/Navbar";
 import Link from "next/link";
 import { FileText, Upload, Loader2, CheckCircle, Download, ArrowLeft } from "lucide-react";
 import { main } from "framer-motion/client";
-
+import { API_URL } from "@/lib/api";
 function formatSize(bytes: number): string {
   if (bytes < 1024) return bytes + " B";
   if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + " KB";
@@ -53,7 +53,7 @@ export default function TxtToPDFPage() {
       const formData = new FormData();
       formData.append("file", file);
 
-      const response = await fetch("http://localhost:8000/api/document/txt-to-pdf", {
+      const response = await fetch(`${API_URL}/api/document/txt-to-pdf`, {
         method: "POST",
         body: formData,
       });

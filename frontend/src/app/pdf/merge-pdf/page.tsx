@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useDropzone } from "react-dropzone";
 import Navbar from "@/components/ui/layout/Navbar";
 import Link from "next/link";
+import { API_URL } from "@/lib/api";
 import {
   FileText, X, ArrowUp, ArrowDown,
   Upload, Loader2, CheckCircle, Download, ArrowLeft,
@@ -77,7 +78,7 @@ export default function MergePDFPage() {
     try {
       const formData = new FormData();
       files.forEach((f) => formData.append("files", f.file));
-      const response = await fetch("http://localhost:8000/api/pdf/merge", {
+      const response = await fetch(`${API_URL}/api/pdf/merge`, {
         method: "POST",
         body: formData,
       });

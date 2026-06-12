@@ -6,6 +6,7 @@ import { useDropzone } from "react-dropzone";
 import Navbar from "@/components/ui/layout/Navbar";
 import Link from "next/link";
 import { Mic, Upload, Loader2, CheckCircle, ArrowLeft, Copy, Check } from "lucide-react";
+import { API_URL } from "@/lib/api";
 
 function formatSize(bytes: number): string {
   if (bytes < 1024) return bytes + " B";
@@ -47,7 +48,8 @@ export default function TranscribePage() {
       const formData = new FormData();
       formData.append("file", file);
 
-      const response = await fetch("http://localhost:8000/api/audio/transcribe", {
+      const response = await fetch(`${API_URL}/api/audio/transcribe`, {
+        
         method: "POST",
         body: formData,
       });

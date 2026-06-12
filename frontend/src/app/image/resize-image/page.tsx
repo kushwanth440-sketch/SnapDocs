@@ -6,7 +6,7 @@ import { useDropzone } from "react-dropzone";
 import Navbar from "@/components/ui/layout/Navbar";
 import Link from "next/link";
 import { Maximize2, Upload, Loader2, CheckCircle, Download, ArrowLeft } from "lucide-react";
-
+import { API_URL } from "@/lib/api";
 function formatSize(bytes: number): string {
   if (bytes < 1024) return bytes + " B";
   if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + " KB";
@@ -98,7 +98,7 @@ export default function ResizeImagePage() {
       formData.append("height", String(height));
       formData.append("maintain_aspect", String(maintainAspect));
 
-      const response = await fetch("http://localhost:8000/api/image/resize-image", {
+      const response = await fetch(`${API_URL}/api/image/resize-image`, {
         method: "POST",
         body: formData,
       });

@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useDropzone } from "react-dropzone";
 import Navbar from "@/components/ui/layout/Navbar";
+import { API_URL } from "@/lib/api";
 import {
   Scissors, X, Upload, Loader2, CheckCircle, Download, FileText, ArrowLeft,
 } from "lucide-react";
@@ -64,7 +65,7 @@ export default function SplitPDFPage() {
       if (mode === "range") formData.append("ranges", rangeInput);
       if (mode === "every") formData.append("every_n", String(everyN));
 
-      const response = await fetch("http://localhost:8000/api/pdf/split", {
+      const response = await fetch(`${API_URL}/api/pdf/split`, {
         method: "POST",
         body: formData,
       });

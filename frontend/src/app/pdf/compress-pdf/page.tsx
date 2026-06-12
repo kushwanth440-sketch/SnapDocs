@@ -9,7 +9,7 @@ import {
   Minimize2, Upload, Loader2, CheckCircle, Download, ArrowLeft, FileText,
 } from "lucide-react";
 import { main } from "framer-motion/client";
-
+import { API_URL } from "@/lib/api";
 function formatSize(bytes: number): string {
   if (bytes < 1024) return bytes + " B";
   if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + " KB";
@@ -52,7 +52,7 @@ export default function CompressPDFPage() {
       formData.append("file", file);
       formData.append("level", level);
 
-      const response = await fetch("http://localhost:8000/api/pdf/compress", {
+      const response = await fetch(`${API_URL}/api/pdf/compress`, {
         method: "POST",
         body: formData,
       });

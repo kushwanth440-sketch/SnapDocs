@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/ui/layout/Navbar";
 import Footer from "@/components/ui/layout/Footer";
 import Link from "next/link";
+import { API_URL } from "@/lib/api";
+
 import { ArrowLeft } from "lucide-react";
 
 import {

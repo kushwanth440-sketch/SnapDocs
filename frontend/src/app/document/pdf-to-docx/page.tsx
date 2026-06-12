@@ -9,13 +9,12 @@ import {
   FileInput, Upload, Loader2, CheckCircle, Download, ArrowLeft, FileText,
 } from "lucide-react";
 import { main } from "framer-motion/client";
-
 function formatSize(bytes: number): string {
   if (bytes < 1024) return bytes + " B";
   if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + " KB";
   return (bytes / (1024 * 1024)).toFixed(1) + " MB";
 }
-
+import { API_URL } from "@/lib/api";
 type Status = "idle" | "converting" | "done" | "error";
 
 export default function PDFToDocxPage() {
@@ -47,7 +46,7 @@ export default function PDFToDocxPage() {
       const formData = new FormData();
       formData.append("file", file);
 
-      const response = await fetch("http://localhost:8000/api/document/pdf-to-docx", {
+      const response = await fetch(`${API_URL}/api/document/pdf-to-docx`, {
         method: "POST",
         body: formData,
       });

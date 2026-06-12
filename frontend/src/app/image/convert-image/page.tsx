@@ -6,6 +6,7 @@ import { useDropzone } from "react-dropzone";
 import Navbar from "@/components/ui/layout/Navbar";
 import Link from "next/link";
 import { RefreshCw, Upload, Loader2, CheckCircle, Download, ArrowLeft } from "lucide-react";
+import { API_URL } from "@/lib/api";
 
 function formatSize(bytes: number): string {
   if (bytes < 1024) return bytes + " B";
@@ -58,7 +59,7 @@ export default function ConvertImagePage() {
       formData.append("file", file);
       formData.append("output_format", outputFormat);
 
-      const response = await fetch("http://localhost:8000/api/image/convert-image", {
+      const response = await fetch(`${API_URL}/api/image/convert-image`, {
         method: "POST",
         body: formData,
       });
